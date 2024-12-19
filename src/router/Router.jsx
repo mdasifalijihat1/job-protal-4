@@ -7,6 +7,7 @@ import Register from "../components/loginRegister/Register";
 import Home from "../pages/Home";
 import AddJobes from "../pages/AddJobes";
 import Myjob from "../pages/Myjob";
+import Profile from "../pages/Profile ";
   export const router = createBrowserRouter([
     {
       path: "/",
@@ -32,6 +33,10 @@ import Myjob from "../pages/Myjob";
         {
             path:'/register',
             element:<Register></Register>,
+        },
+        {
+            path:'/profile',
+            element:<Profile></Profile>,
         },
 
       ]
