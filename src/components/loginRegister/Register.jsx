@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import AuthContext from '../../auth/AuthContext';
+import SocialLogin from './SocialLogin';
 
 const Register = () => {
     const { createUser } = useContext(AuthContext);
@@ -89,7 +90,9 @@ const Register = () => {
                         Register
                     </button>
                 </form>
-
+                    {/* Google Login Button */}
+                    <div className='divider'> OR </div>
+                    <SocialLogin></SocialLogin>
                 {/* Login Redirect */}
                 <p className="text-center text-gray-600 mt-4">
                     Already have an account?{' '}

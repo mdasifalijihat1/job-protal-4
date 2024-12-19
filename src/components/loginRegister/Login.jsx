@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
-import { FcGoogle } from "react-icons/fc";
 import AuthContext from "../../auth/AuthContext";
 import Swal from "sweetalert2"; // Import SweetAlert2
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
   const { logInUser } = useContext(AuthContext);
@@ -28,11 +28,6 @@ const Login = () => {
       .catch((error) => {
         console.log(error);
       });
-  };
-
-  const handleGoogleLogin = () => {
-    // Implement Google login logic here
-    console.log("Google login triggered");
   };
 
   return (
@@ -85,13 +80,8 @@ const Login = () => {
         </form>
 
         {/* Google Login Button */}
-        <button
-          onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center border border-gray-300 py-2 rounded hover:bg-gray-100 transition mb-4"
-        >
-          <FcGoogle className="mr-2" size={20} />
-          Continue with Google
-        </button>
+        <div className='divider'> OR </div>
+        <SocialLogin></SocialLogin>
 
         {/* Register Redirect */}
         <p className="text-center text-gray-600 mt-4">
