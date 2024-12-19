@@ -1,40 +1,37 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
+import AuthContext from '../../auth/AuthContext';
 
 const Register = () => {
-    const [formData, setFormData] = useState({
-        fullName: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
-    });
-
-    const handleChange = (e) => {
-        const { id, value } = e.target;
-        setFormData({ ...formData, [id]: value });
-    };
+    const { createUser } = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const form = e.target;
+        const fullName = form.fullName.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(fullName, email, password)
 
-        if (formData.password !== formData.confirmPassword) {
-            Swal.fire({
-                title: 'Error!',
-                text: 'Passwords do not match.',
-                icon: 'error',
-                confirmButtonText: 'Try Again'
+        createUser(email, password)
+            .then((result) => {
+                console.log(result.user);
+                Swal.fire({
+                    title: 'Registration Successful!',
+                    text: 'Your account has been created.',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            })
+            .catch((error) => {
+                console.error(error.message);
+                Swal.fire({
+                    title: 'Error!',
+                    text: error.message,
+                    icon: 'error',
+                    confirmButtonText: 'Try Again'
+                });
             });
-            return;
-        }
-
-        // Handle form submission logic here
-        console.log('Form Data Submitted:', formData);
-        Swal.fire({
-            title: 'Registration Successful!',
-            text: 'Your account has been created.',
-            icon: 'success',
-            confirmButtonText: 'OK'
-        });
     };
 
     return (
@@ -50,8 +47,7 @@ const Register = () => {
                         <input
                             type="text"
                             id="fullName"
-                            value={formData.fullName}
-                            onChange={handleChange}
+                            name="fullName"
                             className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Enter your full name"
                         />
@@ -65,8 +61,7 @@ const Register = () => {
                         <input
                             type="email"
                             id="email"
-                            value={formData.email}
-                            onChange={handleChange}
+                            name="email"
                             className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Enter your email"
                         />
@@ -80,25 +75,9 @@ const Register = () => {
                         <input
                             type="password"
                             id="password"
-                            value={formData.password}
-                            onChange={handleChange}
+                            name="password"
                             className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Enter your password"
-                        />
-                    </div>
-
-                    {/* Confirm Password */}
-                    <div className="mb-6">
-                        <label className="block text-gray-700 mb-2" htmlFor="confirmPassword">
-                            Confirm Password
-                        </label>
-                        <input
-                            type="password"
-                            id="confirmPassword"
-                            value={formData.confirmPassword}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder="Confirm your password"
                         />
                     </div>
 
