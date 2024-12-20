@@ -28,8 +28,8 @@ const Navbar = () => {
           <Link to={"/addjob"} className="hover:text-gray-300 transition">
             Add Job
           </Link>
-          <Link to={"/myjob"} className="hover:text-gray-300 transition">
-            My Job
+          <Link to={"/myApplication"} className="hover:text-gray-300 transition">
+            My Application
           </Link>
         </div>
 

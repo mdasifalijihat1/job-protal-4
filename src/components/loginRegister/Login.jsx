@@ -2,10 +2,15 @@ import React, { useContext, useState } from "react";
 import AuthContext from "../../auth/AuthContext";
 import Swal from "sweetalert2"; // Import SweetAlert2
 import SocialLogin from "./SocialLogin";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { logInUser } = useContext(AuthContext);
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log('login page', location)
+  const from = location.state || '/';
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,7 +20,8 @@ const Login = () => {
 
     logInUser(email, password)
       .then((result) => {
-        console.log("sign in ", result.user);
+        console.log("sign in ", result.user)
+        navigate(from);
         setShowSuccessAlert(true);
         Swal.fire({
           title: "Success!",

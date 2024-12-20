@@ -6,7 +6,7 @@ import team1 from "../../assets/team/group (2).jpg";
 const Banner = () => {
   return (
     <div className="bg-blue-50 py-16 px-6 relative">
-      <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Left Section */}
         <div className="pr-8">
           <motion.h1
@@ -17,18 +17,18 @@ const Banner = () => {
               repeat: Infinity,
               repeatType: "reverse",
             }}
-            className="text-4xl font-bold text-gray-900"
+            className="text-3xl md:text-4xl font-bold text-gray-900"
           >
             The Easiest Way
           </motion.h1>
 
           <motion.h2
-            className="text-4xl font-bold text-gray-900"
+            className="text-3xl md:text-4xl font-bold text-gray-900"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5 }}
           >
-            New{" "}
+            New {" "}
             <motion.span
               animate={{ color: ["#ecff33", "#33ffe3", "#ff6133"] }}
               transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
@@ -39,14 +39,14 @@ const Banner = () => {
             For You
           </motion.h2>
 
-          <p className="mt-6 text-gray-600">
+          <p className="mt-6 text-gray-600 text-sm md:text-base">
             Each month, more than 3 million job seekers turn to websites in
             their search for work, making over 140,000 applications every
             single day.
           </p>
 
           {/* Search Form */}
-          <div className="mt-8 flex gap-4">
+          <div className="mt-8 flex flex-col md:flex-row gap-4">
             <select className="flex-1 min-w-[120px] border border-gray-300 rounded-lg px-4 py-3">
               <option>Industry</option>
             </select>
@@ -64,8 +64,8 @@ const Banner = () => {
           </div>
 
           {/* Popular Searches */}
-          <p className="mt-4 text-gray-600">
-            Popular Searches:{" "}
+          <p className="mt-4 text-gray-600 text-sm">
+            Popular Searches: {" "}
             <span className="text-blue-600">
               Designer, Web, IOS, Developer, PHP, Senior, Engineer
             </span>
@@ -82,12 +82,12 @@ const Banner = () => {
               repeat: Infinity,
               repeatType: "loop",
             }}
-            className="absolute top-0 left-16"
+            className="absolute top-0 left-8 md:left-16"
           >
             <img
               src={team2}
               alt="Team collaboration"
-              className="rounded-tl-3xl rounded-br-3xl border-4 border-blue-500 shadow-lg w-60"
+              className="rounded-tl-3xl rounded-br-3xl border-4 border-blue-500 shadow-lg w-48 md:w-60"
             />
           </motion.div>
 
@@ -99,17 +99,17 @@ const Banner = () => {
               repeat: Infinity,
               repeatType: "loop",
             }}
-            className="absolute bottom-0 right-0"
+            className="absolute bottom-0 right-4 md:right-0"
           >
             <img
               src={team1}
               alt="Professional meeting"
-              className="rounded-tl-3xl rounded-br-3xl border-4 border-blue-500 shadow-lg w-60"
+              className="rounded-tl-3xl rounded-br-3xl border-4 border-blue-500 shadow-lg w-48 md:w-60"
             />
           </motion.div>
 
           {/* Decorative Dots */}
-          <div className="absolute top-0 right-0 transform translate-x-16 -translate-y-8">
+          <div className="absolute top-0 right-0 transform translate-x-16 -translate-y-8 hidden md:block">
             <svg
               width="100"
               height="100"
