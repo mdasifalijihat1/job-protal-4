@@ -31,6 +31,9 @@ const Navbar = () => {
           <Link to={"/myApplication"} className="hover:text-gray-300 transition">
             My Application
           </Link>
+          <Link to={"/myPstedJobs"} className="hover:text-gray-300 transition">
+             My Posted Jobs
+          </Link>
         </div>
 
         {/* Right Side - User Actions */}
